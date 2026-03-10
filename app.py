@@ -6,10 +6,10 @@ from datetime import datetime
 
 # ---------------- CONFIG ----------------
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'Root!234',
-    'database': 'picture_upload'
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'user': os.environ.get('DB_USER', 'your_db_user'),
+    'password': os.environ.get('DB_PASS', 'your_secure_password'),
+    'database': os.environ.get('DB_NAME', 'insurance_db')
 }
 
 UPLOAD_FOLDER = 'static/uploads/'
@@ -207,3 +207,4 @@ if __name__ == '__main__':
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     app.run(debug=True, port=8000)
+
